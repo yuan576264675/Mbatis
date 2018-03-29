@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -96,7 +97,21 @@ public class Configuration {
             mapper.setInterfaceName(root.attributeValue("nameSpace"));
 
             Map<String,IFunction> functionMap = new HashMap<>();
+            for(Iterator iterator = root.elementIterator();iterator.hasNext();){
+                IFunction function = new IFunction();
 
+                Element e = (Element)iterator.next();
+                String sqlType = e.getName().trim();
+                String funcName = e.attributeValue("id").trim();
+                String sql = e.getText().trim();
+                String resultType = e.attributeValue("resultType").trim();
+
+                function.setSql(sql);
+                function.setFuncName(funcName);
+                function.setSqltype(sqlType);
+                functionMap.put(funcName,function);
+            }
+            mapper.setFunctions(functionMap);
             return mapper;
         } catch (DocumentException e) {
             e.printStackTrace();

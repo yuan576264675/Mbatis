@@ -6,4 +6,5 @@ package cn.yuan.executor;
  * @author yuan
  */
 public interface Executor {
+    public <T> T query(String statement, Object param);
 }
