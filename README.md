@@ -1,1 +1,4 @@
 手写Mybatis框架(简化)
+
+现在还有BaseExecutor的query方法未实现
+还有SqlSessionFactory要如何生产SqlSession这个需要考虑
