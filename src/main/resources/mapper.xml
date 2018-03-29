@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="" ?>
+
+<mapper nameSpace="cn.yuan.dao.SysUserDao">
+    <select id="getSysUserById" resultType="cn.yuan.entity.SysUser">
+        SELECT * FROM sys_user WHERE user_id= ? ;
+    </select>
+</mapper>
